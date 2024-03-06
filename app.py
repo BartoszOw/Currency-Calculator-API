@@ -21,11 +21,23 @@ with open('data.csv','w', newline='') as csvfile:
 
 @app.route('/', methods=['GET','POST'])
 def select():
-    if request.method == 'POST':
-        with open('data.csv', 'r') as csvfile:
-            reader = csv.DictReader(csvfile)
+
+    column_code = []
+    column_ask = []
+    with open('data.csv') as csvfile:
+        reader = csv.DictReader(csvfile, delimiter=';')
+        for row in reader:
+            column_code.append(row['code'])
+            column_ask.append(row['ask'])
+            
+    selected_option = None
+    if request.method == "POST":
+            selected_option = request.form['currency']
+            print(selected_option)
+                    
+   
         
-    return render_template('select.html')
+    return render_template('select.html',column_code=column_code, selected_option=selected_option)
 
 
 
