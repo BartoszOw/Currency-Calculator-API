@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+
 import requests
 import csv
 
@@ -20,6 +21,10 @@ with open('data.csv','w', newline='') as csvfile:
 
 @app.route('/', methods=['GET','POST'])
 def select():
+    if request.method == 'POST':
+        with open('data.csv', 'r') as csvfile:
+            reader = csv.DictReader(csvfile)
+        
     return render_template('select.html')
 
 
@@ -30,3 +35,4 @@ def select():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    app.run()

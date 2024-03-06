@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    {% endblock %}
+</head>
+<body>
+    <h1>Kalkulator Waluty (PLN)</h1>
+    <div class="container">{% block container %}{% endblock %}</div>
+    {% block result %}{% endblock %}
+</body>
+</html>
