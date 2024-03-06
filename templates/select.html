@@ -14,9 +14,12 @@
 
 {% endblock %}
 {% block result %}
-{% if selected_option %}
+{% if selected_currency %}
 <div class="choose">
-    <h1>PLN --- > {{selected_option}}</h1>
+    <h1>PLN --- > {{selected_currency}}</h1>
+    <h3>KURS : {{selected_ask}}</h3>
+    <h2>{{res}} --- > {{selected_amount}}</h2>
+
 </div>
 {% endif %}
 {% endblock %}

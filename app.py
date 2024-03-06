@@ -30,14 +30,22 @@ def select():
             column_code.append(row['code'])
             column_ask.append(row['ask'])
             
-    selected_option = None
+    selected_currency = None
+    selected_ask = 0
+    selected_amount = 0
+    res = 0
     if request.method == "POST":
-            selected_option = request.form['currency']
-            print(selected_option)
+            selected_currency = request.form['currency']
+            index_code = column_code.index(selected_currency)
+            selected_ask = column_ask[index_code]
+            selected_amount = request.form['count']
+            res = float(selected_ask) * int(selected_amount)
+
+            
                     
    
         
-    return render_template('select.html',column_code=column_code, selected_option=selected_option)
+    return render_template('select.html',res=res,column_code=column_code, selected_currency=selected_currency, selected_ask=selected_ask, selected_amount=selected_amount)
 
 
 
