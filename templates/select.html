@@ -18,8 +18,11 @@
 <div class="choose">
     <h1>PLN --- > {{selected_currency}}</h1>
     <h3>KURS : {{selected_ask}}</h3>
+    {% if selected_amount %}
     <h2>{{res}} --- > {{selected_amount}}</h2>
-
+    {% else %}
+    <h2>Wybierz ile zamierzasz kupić!</h2>
+    {% endif %}
 </div>
 {% endif %}
 {% endblock %}
