@@ -39,19 +39,17 @@ def select():
     selected_ask = 0
     selected_amount = 0
     res = ''
+    wyn = ''
 
     if request.method == "POST":
         selected_amount = request.form['count']
         selected_currency = request.form['currency']
         index_code = column_code.index(selected_currency)
-        selected_ask = column_ask[index_code]
-            
-        if not selected_amount:
-            wyn = "Uzupełnij Ilość!" 
-        else:
-            res = float(selected_ask) * float(selected_amount)
+        selected_ask = column_ask[index_code] 
+        res = float(selected_ask) * float(selected_amount)
+        
 
-    return render_template('select.html',res=res,column_code=column_code, selected_currency=selected_currency, selected_ask=selected_ask, selected_amount=selected_amount)
+    return render_template('select.html',wyn=wyn, res=res,column_code=column_code, selected_currency=selected_currency, selected_ask=selected_ask, selected_amount=selected_amount)
 
 
 
